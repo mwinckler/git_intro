@@ -26,7 +26,9 @@
 # Wait a minute, this is 2012. _Command prompt?!_
 
 * Learn it the hard way first
-* After mastery, you can go search for a GUI
+* After mastery, you can go find a GUI
+
+If you start with a GUI but don't have a clue about the basics of the underlying system, you're asking for trouble.
 
 
 <!SLIDE >
@@ -80,6 +82,139 @@ Example:
 
 <!SLIDE >
 
+# Do Some Work
+
+1. Change some files
+2. Add a new file
+3. What does Git think about that?
+	* `git status`
+
+
+<!SLIDE >
+
+# Commit those changes!
+
+	git add .
+	git commit
+
+<!SLIDE >
+
+# git add? I thought we added these already!
+
+## And now, a brief digression into the subject of What Git Cares About. 
+
+(Hint: only what you've told it to)
+
+<!SLIDE >
+
+# The Various And Divers States Of A File
+
+## A file with changes falls into one of four categories:
+
+* Untracked
+* Changed but _unstaged_ for commit
+* Changed and _staged_ for commit
+* Ignored
+
+
+<!SLIDE >
+
+# Untracked files
+
+## These are files that are present in your repository directory but that you have not told Git to keep track of (via `git add`).
+
+<!SLIDE >
+
+# Changed but unstaged
+
+`git status` shows these as "Changes not staged for commit"
+
+## These are files that:
+
+* have been added to the repository,
+* have changed since the last commit, and
+* you have _not_ yet told Git to include them (via `git add`) next time you run `git commit`
+
+<!SLIDE >
+
+# Changed and staged
+
+`git status` shows these as "Changes to be committed"
+
+## These are files that:
+
+* have been added to the repository,
+* have changed since the last commit, and
+* you have told Git (via `git add`) to include next time you `git commit`
+
+<!SLIDE >
+
+# Ignored
+
+`git status` will never show these.
+
+* These are files you've told Git to ignore via `.gitignore`.
+* Git will never ignore files that have been added to the repository, even if they match a `.gitignore` entry.
+
+
+<!SLIDE >
+
+# Back on topic: committing
+
+	git add .
+	git commit
+
+A shortcut:
+
+	git commit -a
+
+<!SLIDE >
+
+# An even shorter cut:
+
+	git commit -am "your message"
+
+<!SLIDE >
+
+# What's our status now?
+
+	git status
+
+# What's our history?
+
+	git log
+
+<!SLIDE >
+
+# Wait, I didn't mean to do that!
+
+## Need to fix the most recent commit?
+
+	[make the changes]
+	git commit --amend
+
+**DO NOT** use `--amend` if you have already pushed to a remote repository! Your collaborators will curse your name!
+
+<!SLIDE >
+
+# Wait, I didn't mean to do that! (pt. 2)
+
+## Want to revert to a specific version of a file?
+
+	git checkout HEAD^4 -- filename
+
+retrieves `filename` from 4 versions ago
+
+	git checkout [commit-hash] -- filename
+
+retrieves `filename` as it existed in the commit identified by `commit-hash`
+
+<!SLIDE >
+
+
+
+<!SLIDE >
+
 # Version Control Philosophy
 
 ## What goes in the repository?
@@ -95,14 +230,6 @@ Example:
 [`.gitignore`](http://help.github.com/ignore-files/): A special file telling Git what to ignore.
 
 Note that `.gitignore` will not ignore files that you've already told Git to care about.
-
-
-<!SLIDE >
-
-# Does Git Care About [filename]?
-
-Git only keeps track of files it knows and cares about. 
-
 
 
 <!SLIDE >
