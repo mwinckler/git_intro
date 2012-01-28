@@ -1,0 +1,7 @@
+{ 
+	"name": "Repo Man", 
+	"sections": [ 
+		{"section":"intro"},
+		{"section":"git"}
+	]
+}
