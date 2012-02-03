@@ -1,0 +1,695 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Repo Man</title>
+
+  <meta name="viewport" content="width=device-width"/>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+  <script type="text/javascript" src="./js/coffee-script.js"></script>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
+
+  
+    <link rel="stylesheet" href="file/styles.css" type="text/css"/>
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+      setupPreso(false, './');
+  });
+  </script>
+
+</head>
+
+<body>
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">z, ?</td><td>toggle help (this)</td></tr>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">shift-space, &larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>toggle debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c, t</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">n</td><td>toggle notes</td></tr>
+    <tr><td class="key">p</td><td>run preshow</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content subsection" ref="intro/01_slide/1">
+<h1>Repo Man</h1>
+
+<h2>The Adventurous Life of a Version Controller</h2>
+
+<p><em>or</em></p>
+
+<h3>How I Learned To Stop Subverting And Love The DVCS</h3>
+
+<br/><br/><br/><br/>
+
+
+<p>by Matt Winckler<br/>
+<em>(mwinckler@intera.com)</em></p>
+
+<p>3 Feb 2012</p></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="intro/01_slide/2">
+<h1>What is version control?</h1>
+
+<h2>Version control is...</h2>
+
+<ul>
+<li>A way to keep track of changes in files</li>
+<li>A structured way to collaborate between developers</li>
+<li>Never having to say "I'm sorry"</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="intro/01_slide/3">
+<h1>Why should I use version control?</h1>
+
+<h2>Some obvious reasons:</h2>
+
+<ul>
+<li>It keeps previous versions of files</li>
+<li>It merges other people's changes for you</li>
+<li>It shows a history of the code</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="intro/01_slide/4">
+<h1>Why should I use version control?</h1>
+
+<h2>Some less obvious reasons:</h2>
+
+<ul>
+<li>It helps you fix bugs in deployed code</li>
+<li>It gives you freedom to experiment</li>
+<li>It can make audits easier to handle</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="intro/01_slide/5">
+<h1>What sorts of things should be controlled?</h1>
+
+<ul>
+<li><strong><em>Everything</em> that doesn't get created as part of your build process</strong></li>
+<li><strong>...and <em>nothing</em> that does</strong></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="intro/01_slide/6">
+<h1>The traditional model of version control</h1>
+
+<ul>
+<li>Centralized version control systems rely on one central server keeping the "canonical" version.</li>
+<li>There are several downsides to this.</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="intro/01_slide/7">
+<h1>What does "DVCS" mean?</h1>
+
+<ul>
+<li>A <strong>Distributed Version Control System</strong> is a VCS that doesn't rely on a central server.</li>
+<li>Instead, each copy of the repository is a <em>full</em> repository--including history.</li>
+<li>Distributed repositories can swap changes with each other.</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="intro/01_slide/8">
+<h1>No server?<br/>What madness is this?!</h1>
+
+<p class="notes">No server. If this is madness, I don't want to be sane.</p></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="intro/01_slide/9">
+<h1>What about collaboration?</h1>
+
+<ul>
+<li>Well, what about it?</li>
+<li>DVCS repositories communicate as peers.</li>
+<li><a href="http://www.jedi.be/blog/2009/05/06/8-ways-to-share-your-git-repository/#fileshare">You don't even need a special server for collaboration.</a> (But it's good to have one.)</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental left" ref="intro/01_slide/10">
+<h1>Why should I use a <strong><em>D</em></strong>VCS?</h1>
+
+<ul>
+<li><strong>Speed:</strong> The Tortoise[SVN] versus the...Git</li>
+<li><strong>Redundancy:</strong> Each clone is a full repository</li>
+<li><strong>Mobility:</strong> Work on an airplane? No problem.</li>
+<li><strong>Scaling:</strong> Large numbers of files</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="Questions thus far?">
+<h1>Questions thus far?</h1></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="git-basics/01_slide/1">
+<h1>Introducing Git</h1>
+
+<p><a href="http://git-scm.com/">git-scm.com</a></p></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="git-basics/01_slide/2">
+<h1>What is it?</h1>
+
+<ul>
+<li><p>Git is <strong>distributed version control system</strong> software written by our favorite penguin-loving Finn, Linus Torvalds.</p></li>
+<li><p>Think of it as Subversion without the server. And with better branching. And merging that won't make you old. And faster. And without <code>.svn</code> folders littered about the place.</p></li>
+<li><p>But other than that, it's just like Subversion.</p></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/3">
+<h1>What's it good at?</h1>
+
+<p>Managing large numbers of text files...for instance, source code. (It was written for the Linux kernel.)</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/4">
+<h1>What's it bad at?</h1>
+
+<p>Handling enormously large files.</p>
+
+<p>Possible remedy: <a href="http://git-annex.branchable.com/">git annex</a>. Disclaimer: I don't know anything about the git annex project.</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/5">
+<h1>Installation</h1>
+
+<ul>
+<li>Ubuntu: <code>apt-get install git-core</code></li>
+<li>OSX: <a href="http://code.google.com/p/git-osx-installer/downloads/list?can=3">git-osx-installer</a></li>
+<li>Windows: <a href="http://code.google.com/p/msysgit/downloads/list">msysgit</a></li>
+</ul>
+
+
+<p class="notes">If you Google and install Git right now, by the end of this presentation you'll be able to use it to download...this presentation!</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/6">
+<h1>Basic Workflow Commands</h1>
+
+<ol>
+<li>Open a command prompt</li>
+</ol>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/7">
+<h1>Wait a minute, this is 2012. <em>Command prompt?!</em></h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="git-basics/01_slide/8">
+<h1>You're going to <em>use</em> the command prompt, and <em>like</em> it.</h1>
+
+<ul>
+<li>Learn it the hard way first</li>
+<li>After mastery, you can go find a GUI</li>
+<li>...but you may not want to.</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smbullets incremental left" ref="git-basics/01_slide/9">
+<h1>Basic Commands</h1>
+
+<p><code>git &lt;command&gt;</code></p>
+
+<ul>
+<li><code>git init</code> or <code>git clone</code> a new repository</li>
+<li><code>git add</code> files to the repository</li>
+<li><code>git commit</code> changes</li>
+<li><code>git show</code> a particular commit's details</li>
+<li><code>git log</code> to view past commits</li>
+<li><code>git status</code> to show the status of your working copy</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/10">
+<h1>Create a new repository...</h1>
+
+<pre><code>cd &lt;project-folder&gt;
+git init
+git add .
+git commit -am "Initial commit"
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/11">
+<h1>...or clone an existing repo</h1>
+
+<pre><code>git clone &lt;remote-location&gt;
+</code></pre>
+
+<p>Example:</p>
+
+<pre class="smaller"><code>git clone git@github.com:mwinckler/libMatt.git</code></pre>
+
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/12">
+<h1>Do Some Work</h1>
+
+<ol>
+<li>Change some files</li>
+<li>Add a new file</li>
+<li>What does Git think about that?
+
+<ul>
+<li><code>git status</code></li>
+</ul>
+</li>
+</ol>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="git-basics/01_slide/13">
+<h1>Commit those changes!</h1>
+
+<h2>Wait. First, what's a commit?</h2>
+
+<ul>
+<li>An atomic snapshot of files as they existed at the time of the commit.</li>
+<li>Identified by a SHA1 hash.</li>
+<li>Stores metadata (author, date, etc.).</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/14">
+<h1>Commit those changes!</h1>
+
+<pre><code>git add .
+git commit
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/15">
+<h1><code>git add</code>? I thought we added these already!</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/16">
+<h1>Let us discuss the sensitive subject of What Git Cares About.</h1></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="git-basics/01_slide/17">
+<h1>Things Git Cares About</h1>
+
+<p>(you're not one of them)</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/18">
+<h1>Git cares about<br/>the things you tell it to.</h1>
+
+<p><code>git add</code></p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/19">
+<h1><code>git status</code> gives us clues.</h1>
+
+<p class="notes">Switch to terminal, git status.</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/20">
+<h1>The Various And Divers States Of A File</h1>
+
+<h2>A file with changes falls into one of four categories:</h2>
+
+<ul>
+<li>Untracked</li>
+<li>Changed but <em>unstaged</em> for commit</li>
+<li>Changed and <em>staged</em> for commit</li>
+<li>Ignored</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/21">
+<h1>Untracked files</h1>
+
+<h2>These are files that are present in your repository directory but that you have not told Git to keep track of (via <code>git add</code>).</h2>
+
+<p class="notes">By default, before ever running "git add", this is all your files.</p></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental left" ref="git-basics/01_slide/22">
+<h1>Changed but unstaged</h1>
+
+<p><code>git status</code> shows these as "Changes not staged for commit"</p>
+
+<h2>These are files that:</h2>
+
+<ul>
+<li>have been added to the repository,</li>
+<li>have changed since the last commit, and</li>
+<li>you have <em>not</em> yet told Git to include them in the next <code>git commit</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental left" ref="git-basics/01_slide/23">
+<h1>Changed and staged</h1>
+
+<p><code>git status</code> shows these as "Changes to be committed"</p>
+
+<h2>These are files that:</h2>
+
+<ul>
+<li>have been added to the repository,</li>
+<li>have changed since the last commit, and</li>
+<li>you <em>have</em> told Git (via <code>git add</code>) to include next time you <code>git commit</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental left" ref="git-basics/01_slide/24">
+<h1>Ignored</h1>
+
+<ul>
+<li><code>git status</code> will never show these.</li>
+<li>These are files you've told Git to ignore via <code>.gitignore</code> (repo-based or global).</li>
+<li>Git will never ignore files that have been added to the repository, even if they match a <code>.gitignore</code> entry.</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/25">
+<h1>Back on topic: committing</h1>
+
+<pre><code>git add .
+git commit
+</code></pre>
+
+<p class="notes">Switch to terminal, demonstrate</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/26">
+<h1>A commit shortcut</h1>
+
+<pre><code>git commit -a
+</code></pre>
+
+<p>The <code>a</code> stands for "all" and will commit all changed files, staged or unstaged (but not <em>untracked</em> ones).</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/27">
+<h1>An even shorter cut</h1>
+
+<pre><code>git commit -am "your message"
+</code></pre>
+
+<p>The <code>m</code> stands for "message" and lets you specify your commit message on the command line.</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/28">
+<h1>What's our status now?</h1>
+
+<pre><code>git status
+</code></pre>
+
+<h1>What's our history?</h1>
+
+<pre><code>git log
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content smbullets incremental left" ref="git-basics/01_slide/29">
+<h1>Rollbacks</h1>
+
+<p>What kind of rollback do you want?</p>
+
+<ul>
+<li>Change the most recent commit?<br/><code>git commit --amend</code></li>
+<li>Revert an entire commit?<br/><code>git revert &lt;commit-hash&gt;</code></li>
+<li>Check out a particular file?<br/><code>git checkout &lt;commit-hash&gt; -- &lt;file&gt;</code></li>
+<li>Don't know for sure? Find differences:<br/><code>git diff &lt;commit1&gt;..&lt;commit2&gt;</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/30">
+<h1>Amending the last commit</h1>
+
+<p>Go ahead and make the changes, then:</p>
+
+<pre><code>git commit --amend
+</code></pre>
+
+<p><strong>DO NOT</strong> use <code>--amend</code> if you have already pushed to a remote repository! Your collaborators will curse your name!</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/31">
+<h1>Check out a particular version</h1>
+
+<pre><code>git checkout &lt;commit-hash&gt; -- filename
+</code></pre>
+
+<p>retrieves <code>filename</code> as it existed in that commit</p>
+
+<pre><code>git checkout HEAD^4 -- filename
+</code></pre>
+
+<p>retrieves <code>filename</code> from 4 versions ago</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/32">
+<h1>Revert an entire commit</h1>
+
+<p>(the "Matt must have been drinking during that commit" option)</p>
+
+<pre><code>git revert &lt;commit-hash&gt;
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/33">
+<h1>Finding differences</h1>
+
+<pre><code>git diff &lt;file&gt;
+</code></pre>
+
+<p>shows uncommitted changes in your working copy.</p>
+
+<pre><code>git diff &lt;commit1&gt;..&lt;commit2&gt; -- &lt;file&gt;
+</code></pre>
+
+<p>shows the differences in <code>&lt;file&gt;</code> between <code>commit1</code> and <code>commit2</code>.</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/34">
+<h1>Need your GUI?</h1>
+
+<p><em>(diffs are hard; let's go shopping!)</em></p>
+
+<p>It's okay. I understand. Just replace <code>diff</code> with <code>difftool</code>.</p>
+
+<p>First you may need to <a href="http://duckduckgo.com/?q=git+difftool">configure a difftool</a>, which is left as an exercise for the reader.</p></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="git-basics/01_slide/35">
+<h1>A Brief Review</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="git-basics/01_slide/36">
+<h1>Basic commands</h1>
+
+<ul>
+<li>Create a repository via <code>git init</code> or <code>git clone</code></li>
+<li>Add stuff via <code>git add</code></li>
+<li>Make changes, then <code>git commit</code> them</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="git-basics/01_slide/37">
+<h1>Were you paying attention earlier?</h1>
+
+<h2>What goes in the repository?</h2>
+
+<ul>
+<li>Everything the build <em>doesn't</em> create, and <em>nothing</em> that it does</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-basics/01_slide/38">
+<h1>How do we ignore stuff like build results?</h1>
+
+<p><a href="http://help.github.com/ignore-files/"><code>.gitignore</code></a>: A special file telling Git what to ignore.</p></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="Questions about basic workflow?">
+<h1>Questions about basic workflow?</h1></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="git-collab/01_collaboration/1">
+<h1>Collaboration Using Git</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental left" ref="git-collab/01_collaboration/2">
+<h1>Collaboration Commands</h1>
+
+<ul>
+<li><code>git remote</code> to view/change remotes</li>
+<li><code>git push</code> changes to a remote</li>
+<li><code>git pull</code> changes from a remote</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="git-collab/01_collaboration/3">
+<h1>What is a remote?</h1>
+
+<p>A <em>remote</em> is a repository located somewhere else that your Git client knows and cares about.</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-collab/01_collaboration/4">
+<h1>Creating Remotes</h1>
+
+<p>The easy way:</p>
+
+<pre><code>git clone &lt;remote-location&gt;
+</code></pre>
+
+<p><code>clone</code> does two things: copies the remote repository and sets up a remote named <code>origin</code> so that you can push/pull changes to/from it.</p>
+
+<p class="notes">Switch to terminal for demo.</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-collab/01_collaboration/5">
+<h1>Creating Remotes</h1>
+
+<p>The manual way:</p>
+
+<pre><code>git remote add &lt;remote-name&gt; &lt;remote-url&gt;
+</code></pre>
+
+<p>Do this if you already have a copy of the repository locally and you want to tie it to a copy at a remote location (or push it to a remote server).</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-collab/01_collaboration/6">
+<h1>Viewing remotes</h1>
+
+<p>To see what remotes you have set up, run:</p>
+
+<pre><code>git remote show
+</code></pre>
+
+<p>To get more details on a particular remote, use:</p>
+
+<pre><code>git remote show &lt;remote-name&gt;
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-collab/01_collaboration/7">
+<h1>Push and Pull</h1>
+
+<ul>
+<li><code>git pull</code> retrieves changes from a remote and <code>merges</code> them into your working copy.</li>
+<li><code>git push</code> sends your changes up to a remote.</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="git-collab/01_collaboration/8">
+<h1>Push</h1>
+
+<p>Do this when you want to send your local changes up to a server for others to pull.</p>
+
+<ul>
+<li><strong>In order to <code>push</code>,</strong>
+
+<ol>
+<li> Your working copy must be clean (no uncommitted changes)</li>
+<li> Your working copy must be up-to-date with the remote you're pushing to (no changes you haven't yet <code>pull</code>ed)</li>
+</ol>
+</li>
+</ul>
+
+
+<p class="notes">Switch to terminal for demo.</p></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="git-collab/01_collaboration/9">
+<h1>Pull</h1>
+
+<p>Do this when you want to retrieve other people's changes.</p>
+
+<ul>
+<li>In order to <code>pull</code> your working copy must be clean (no uncommitted changes).</li>
+<li><strong><code>pull</code> performs the following actions:</strong>
+
+<ol>
+<li> Retrieves changes from the specified remote</li>
+<li> Applies them to the local copy:
+
+<ol>
+<li> If there are no local changes, "fast-forward" the remote changes</li>
+<li> If there are local changes, perform a <code>merge</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-collab/01_collaboration/10">
+<h1>Pull</h1>
+
+<pre><code>git pull &lt;remote-name&gt; &lt;refspec&gt;
+</code></pre>
+
+<p>Example: If I have a remote called <code>origin</code> and I want to retrieve the branch called <code>master</code>:</p>
+
+<pre><code>git pull origin master
+</code></pre>
+
+<p class="notes">Switch to terminal for example</p></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="Questions about collaboration?">
+<h1>Questions about collaboration?</h1></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="git-advanced/01_slide/1">
+<h1>Advanced Workflow</h1></div>
+</div><div class="slide" data-transition="none"><div class="content smbullets incremental left" ref="git-advanced/01_slide/2">
+<h1>Git Advanced Workflow</h1>
+
+<ul>
+<li><code>git branch</code> to work on stuff in isolation</li>
+<li><code>git merge</code> to get outside changes into your copy</li>
+<li><code>git stash</code> to tuck changes away temporarily</li>
+<li><code>git tag</code> to put a label on a version for easy lookup later</li>
+<li><code>git rebase</code> to destroy your sanity*</li>
+<li><br/><br/><small>* results may vary</small></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-advanced/01_slide/3">
+<h1>Branches</h1>
+
+<p>(image of branching goes here)</p>
+
+<p>A branch is a copy of the code you can work on while leaving other branches untouched.</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-advanced/01_slide/4">
+<h1>Branches</h1>
+
+<p>Each branch keeps track of the changes that have been made in it so that it can be <code>merge</code>d back into the branch it came from, or vice versa.</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-advanced/01_slide/5">
+<h1>Branches</h1>
+
+<p>Branches are cheap - Git only stores "deltas", not full copies. Make branches!</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-advanced/01_slide/6">
+<h1>Creating a Branch</h1>
+
+<pre><code>git checkout -b &lt;branch-name&gt;
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-advanced/01_slide/7">
+<h1>Switching between branches</h1>
+
+<pre><code>git checkout &lt;branch-name&gt;
+</code></pre>
+
+<p><strong>Note:</strong> Your working directory need not be clean. This may or may not be desirable.</p>
+
+<p class="notes">Switch to terminal for demo.</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-advanced/01_slide/8">
+<h1>Merging</h1>
+
+<p>A merge grabs changes from a <strong>different</strong> branch and merges them into the <strong>current</strong> branch.</p></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="git-advanced/01_slide/9">
+<h1>Merging</h1>
+
+<ul>
+<li><p>If the relevant files only changed on the branch being merged, it's a <em>fast-foward</em> merge.</p></li>
+<li><p>If both files changed, it's a <em>non-fast-forward</em> merge, but Git might still do it without user interaction.</p></li>
+<li><p>If both files changed the same lines, it's a <em>conflict</em> and requires user intervention.</p></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-advanced/01_slide/10">
+<h1>Merging</h1>
+
+<p>First checkout the branch you want to merge <strong>onto</strong>, then:</p>
+
+<pre><code>git merge &lt;branch-name&gt;
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-advanced/01_slide/11">
+<h1>Stashing</h1>
+
+<p>Forget about the changes in your working directory...temporarily.</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-advanced/01_slide/12">
+<h1>Stashing</h1>
+
+<p>With <em>unstaged</em> changes in your working directory:</p>
+
+<pre><code>git stash
+</code></pre>
+
+<p>Warning: <code>stash</code> only stashes changes to files that Git already cares about.</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-advanced/01_slide/13">
+<h1>Get the stash back</h1>
+
+<pre><code>git stash pop
+</code></pre>
+
+<p>Note: This pops onto whatever your working directory currently is...even if its not the one you stashed from.</p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-advanced/01_slide/14">
+<h1>Branch from the stash</h1>
+
+<pre><code>git stash branch &lt;branch-name&gt;
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="git-advanced/01_slide/15">
+<h1>Tagging</h1>
+
+<p>A tag is a convenient way to label a commit.</p>
+
+<p>You don't <em>need</em> a tag to retrieve old versions - but they can be handy if you know you'll need to reference a commit later.</p></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="Questions about anything?">
+<h1>Questions about anything?</h1></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="conclusion">
+<h1>This Is The End</h1>
+
+<p>Matt Winckler<br/>
+mwinckler@intera.com<br/>
+(509) 946-9898 x226</p></div>
+</div></div>
+
+</body>
+</html>

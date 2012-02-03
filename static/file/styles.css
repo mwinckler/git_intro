@@ -1,0 +1,39 @@
+.content li ol, .content li ul {
+	font-size: .9em;
+}
+
+.content > p {
+	font-size: 2.2em;
+}
+
+.content code {
+	background: #eee;
+	border: 1px dashed #aaa;
+}
+
+.content pre code {
+	border: none;
+}
+.content pre {
+	border: 1px dashed #aaa;
+	line-height: 1.3;
+	background: #eee;
+}
+
+.content a {
+	text-decoration: none;
+}
+
+.left > ul > li { 
+	text-align: left;
+}
+
+.smbullets > ul {
+	list-style-type: none;
+}
+.content > pre.smaller {
+	font-size: 250%;
+}
+small {
+	font-size: .65em;
+}
