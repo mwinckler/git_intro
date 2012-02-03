@@ -1,27 +1,38 @@
-<!SLIDE >
+<!SLIDE subsection>
 # Repo Man #
 ## The Adventurous Life of a Version Controller
 
+_or_
+
+### How I Learned To Stop Subverting And Love The DVCS
+<br /><br /><br /><br />
+by Matt Winckler  
+_(mwinckler@intera.com)_
+
+3 Feb 2012
+
 <!SLIDE bullets incremental>
-# What is revision control?
+# What is version control?
 
-## Revision control is...
+## Version control is...
 
-* Software to keep track of changes
-* Safeguard against data loss
+* A way to keep track of changes in files
+* A structured way to collaborate between developers
 * Never having to say "I'm sorry"
 
-<!SLIDE >
+
+<!SLIDE bullets incremental>
 
 # Why should I use version control?
 
 ## Some obvious reasons:
 
 * It keeps previous versions of files
-* It facilitates collaboration
-* It shows a history of what you've done
+* It merges other people's changes for you
+* It shows a history of the code
 
-<!SLIDE >
+
+<!SLIDE bullets incremental>
 
 # Why should I use version control?
 
@@ -31,39 +42,47 @@
 * It gives you freedom to experiment
 * It can make audits easier to handle
 
-<!SLIDE >
+<!SLIDE bullets incremental>
 
-# The traditional model
+# What sorts of things should be controlled?
 
-(insert picture of server-based VCS here)
+* **_Everything_ that doesn't get created as part of your build process**
+* **...and _nothing_ that does**
 
-<!SLIDE >
+<!SLIDE bullets incremental>
+
+# The traditional model of version control
+
+* Centralized version control systems rely on one central server keeping the "canonical" version.
+* There are several downsides to this.
+
+<!SLIDE bullets incremental>
 
 # What does "DVCS" mean?
 
-A **Distributed Version Control System** is a VCS that doesn't rely on a central server.
-
-Examples: Git, Mercurial, Bazaar
+* A **Distributed Version Control System** is a VCS that doesn't rely on a central server.
+* Instead, each copy of the repository is a _full_ repository--including history.
+* Distributed repositories can swap changes with each other.
 
 <!SLIDE >
 
 # No server?<br />What madness is this?!
 
-No server. A DVCS stores the entire repository locally in its own special hidden folder in the root directory of your project.
+.notes No server. If this is madness, I don't want to be sane.
 
-<!SLIDE >
+<!SLIDE bullets incremental>
 
 # What about collaboration?
 
-Okay, fine: *sometimes* there's a server. DVCSes like Git can connect to remote servers to share changes - but they do so as peers, not the traditional client-server relationship you're familiar with.
+* Well, what about it?
+* DVCS repositories communicate as peers.
+* [You don't even need a special server for collaboration.](http://www.jedi.be/blog/2009/05/06/8-ways-to-share-your-git-repository/#fileshare) (But it's good to have one.)
 
-Git can also share changes with no special server involved.
-
-<!SLIDE >
+<!SLIDE bullets incremental left>
 
 # Why should I use a **_D_**VCS?
 
-1. **Speed:** The Tortoise[SVN] versus the Hare
-2. **Redundancy:** Each clone is a full repository
-3. **Mobility:** Work on an airplane? No problem.
-4. **Scaling:** Large numbers of files (not large files)
+* **Speed:** The Tortoise[SVN] versus the...Git
+* **Redundancy:** Each clone is a full repository
+* **Mobility:** Work on an airplane? No problem.
+* **Scaling:** Large numbers of files

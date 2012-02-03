@@ -1,7 +1,14 @@
 { 
 	"name": "Repo Man", 
 	"sections": [ 
-		{"section":"intro"},
-		{"section":"git"}
+		"intro",
+		"# Questions thus far?",
+		"git-basics",
+		"# Questions about basic workflow?",
+		"git-collab",
+		"# Questions about collaboration?",
+		"git-advanced",
+		"# Questions about anything?",
+		"conclusion.md"
 	]
 }
